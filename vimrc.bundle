@@ -1,0 +1,23 @@
+set nocompatible                " be iMproved
+"filetype off                    " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'kien/ctrlp.vim'
+Bundle 'powerline/fonts'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'scrooloose/nerdtree'
+Bundle 'mbbill/undotree'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'majutsushi/tagbar'
+
+"NERDTree{
+        autocmd vimenter * NERDTree
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"}
+
+"TagBar{
+    nmap <Leader>tt :TagbarToggle<CR>
+"}
