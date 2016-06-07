@@ -11,3 +11,5 @@ fi
 
 cp ./vimrc ~/.vimrc
 cp ./vimrc.bundle ~/.vimrc.bundle
+
+vim -u "~/.vimrc" "+BundleInstall" "+qall"
