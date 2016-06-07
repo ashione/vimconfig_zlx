@@ -12,12 +12,44 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'mbbill/undotree'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'majutsushi/tagbar'
+Bundle 'jlanzarotta/bufexplorer'
+Bundle 'vim-scripts/winmanager'
+
 
 "NERDTree{
-        autocmd vimenter * NERDTree
+"        autocmd vimenter * NERDTree
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "}
 
 "TagBar{
     nmap <Leader>tt :TagbarToggle<CR>
+"}
+"
+
+" Winmanager {
+
+let g:NERDTree_title="[NERDTree]"
+"let g:BufExploer_title="[BufExploer]"
+let g:winManagerWindowLayout="NERDTree,BufExploer"
+let g:persistentBehaviour=0
+let g:winManagerWidth=30
+
+function! NERDTree_Start()  
+        exec 'NERDTree'  
+endfunction
+
+function! NERDTree_IsValid()  
+         return 1  
+endfunction
+
+"function! BufExploer_Start()  
+"        exec 'BufExploer'  
+"endfunction
+"
+"function! BufExploer_IsValid()  
+"         return 1  
+"endfunction
+
+nmap <C-m> :if IsWinManagerVisible() <BAR> WMToggle <CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
+
 "}

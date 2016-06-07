@@ -1,4 +1,7 @@
 vimconfig_zlx
 =============
 
-my general vim configration files
+__my general vim configration files__
+
+## usage
+* sh configure.sh
