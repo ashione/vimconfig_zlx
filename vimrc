@@ -1,5 +1,7 @@
 " basic configuration{
 set ts=4
+set sts=4
+set shiftwidth=4
 set nu
 set expandtab
 set cindent
@@ -11,9 +13,6 @@ syntax on
 filetype plugin indent on
 filetype on
 
-"colorscheme torte
-set background=light
-"color evening
 set showmatch
 set hlsearch
 set incsearch
@@ -32,3 +31,17 @@ inoremap jj <ESC>
     endif
 " }
 
+"  UI setting  {
+   set background=dark
+   if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+       let g:solarized_termcolors=255
+       let g:solarized_termtrans=1
+       let g:solarized_contrast="normal"
+       let g:solarized_visibility="normal"
+       color solarized
+   endif
+   "if &term == 'xterm' || &term == 'screen' 
+   "    set t_Co=65536
+   "endif
+
+" }
