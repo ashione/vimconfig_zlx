@@ -34,14 +34,14 @@ inoremap jj <ESC>
 "  UI setting  {
    set background=dark
    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-       let g:solarized_termcolors=255
+       let g:solarized_termcolors=256
        let g:solarized_termtrans=1
        let g:solarized_contrast="normal"
        let g:solarized_visibility="normal"
        color solarized
    endif
-   "if &term == 'xterm' || &term == 'screen' 
-   "    set t_Co=65536
-   "endif
+   if &term == 'xterm' || &term == 'screen' 
+       set t_Co=256
+   endif
 
 " }
