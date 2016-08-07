@@ -9,3 +9,4 @@ __my general vim configration files__
 ## keys-binding
 * <C-m> windowmanager
 * <C-p> ctrlp
+* <C-F5> compile c++ single source code

@@ -77,3 +77,8 @@ autocmd BufWinEnter \[Buf\ List\] setl nonumber
     nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
     let g:ctrlp_funky_matchtype = 'path'
 " }
+
+" Powerline {
+set laststatus=2
+let g:Powerline_symbols='unicode'
+" }

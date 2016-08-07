@@ -45,3 +45,7 @@ inoremap jj <ESC>
    endif
 
 " }
+
+" keys-binding {
+nmap <c-F5> :!g++ % -o out -std=c++11 && ./out<CR>
+" }
