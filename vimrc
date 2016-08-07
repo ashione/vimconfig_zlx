@@ -47,5 +47,41 @@ inoremap jj <ESC>
 " }
 
 " keys-binding {
-nmap <c-F5> :!g++ % -o out -std=c++11 && ./out<CR>
+"nmap <c-F5> :!g++ % -o out -std=c++11 && ./out<CR>
+nmap <c-F5> :call CompileFile()<CR>
+
+func! CompileFile()
+    if &filetype == 'cpp'
+        exec "!g++ % -o out -std=c++11 && ./out && rm ./out"
+    elseif &filetype =='c'
+        exec "!gcc % -o out && ./out && rm ./out"
+    elseif &filetype == 'python'
+        exec "!python %"
+    elseif &filetype == "sh"
+        exec "!sh %"
+    endif
+endfunc
+
+nmap <C-F10> :call UpdateCtags()<CR><CR>
+nmap <silent> <F10> :call GenerateCtags()<CR><CR>
+
+function! GenerateCtags()
+    !ctags -R --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q
+endfunction
+
+function! UpdateCtags()
+    let curdir=getcwd()
+    while !filereadable("./tags")
+        cd ..
+        if getcwd() == "/"
+            break
+        endif
+    endwhile
+    if filewritable("./tags")
+        !ctags -R --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q
+        TlistUpdate
+    endif
+    execute ":cd " . curdir
+endfunction
+
 " }
