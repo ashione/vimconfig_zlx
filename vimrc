@@ -46,6 +46,19 @@ inoremap jj <ESC>
 
 " }
 
+" Identify platform {
+    silent function! OSX()
+        return has('macunix')
+    endfunction
+    silent function! LINUX()
+        return has('unix') && !has('macunix') && !has('win32unix')
+    endfunction
+    silent function! WINDOWS()
+        return  (has('win32') || has('win64'))
+    endfunction
+
+" }
+
 " keys-binding {
 "nmap <c-F5> :!g++ % -o out -std=c++11 && ./out<CR>
 nmap <c-F5> :call CompileFile()<CR>
@@ -83,5 +96,34 @@ function! UpdateCtags()
     endif
     execute ":cd " . curdir
 endfunction
+
+" }
+
+" self-specific {
+iabbr cppheader #include <iostream>
+            \<CR>#include <string>
+            \<CR>#include <vector>
+            \<CR>#include <queue>
+            \<CR>#include <statck>
+            \<CR>#include <map>
+            \<CR>#include <list>
+            \<CR>#include <cstdio>
+            \<CR>#include <cstdlib>
+            \<CR>#include <cstring>
+            \<CR>using namspace std<CR>
+
+iabbr cppcmt <CR>/** 
+\<CR>******************************************************************************
+\<CR>@FunctionName
+\<CR>
+\<CR>@inputs
+\<CR>
+\<CR>@outputs
+\<CR>
+\<CR>Side effects
+\<CR>
+\<CR>******************************************************************************
+\<CR>/<CR>
+
 
 " }
