@@ -100,30 +100,47 @@ endfunction
 " }
 
 " self-specific {
-iabbr cppheader #include <iostream>
-            \<CR>#include <string>
-            \<CR>#include <vector>
-            \<CR>#include <queue>
-            \<CR>#include <statck>
-            \<CR>#include <map>
-            \<CR>#include <list>
-            \<CR>#include <cstdio>
-            \<CR>#include <cstdlib>
-            \<CR>#include <cstring>
-            \<CR>using namspace std<CR>
+function! PrintList(...)
+    for line in a:000
+        execute "normal! o"
+        execute "normal! 0d$i".line
+    endfor
+endfunction
 
-iabbr cppcmt <CR>/** 
-\<CR>******************************************************************************
-\<CR>@FunctionName
-\<CR>
-\<CR>@inputs
-\<CR>
-\<CR>@outputs
-\<CR>
-\<CR>Side effects
-\<CR>
-\<CR>******************************************************************************
-\<CR>/<CR>
+function! CppH()
+    let l:header_list = ['#include <iostream>',
+            \'#include <string>',
+            \'#include <vector>',
+            \'#include <queue>',
+            \'#include <statck>',
+            \'#include <map>',
+            \'#include <list>',
+            \'#include <cstdio>',
+            \'#include <cstdlib>',
+            \'#include <cstring>',
+            \'using namspace std']
+    execute 'normal! i// Ashione '.strftime('%c')
+    call call("PrintList",l:header_list)
+endfunction
 
+nmap <leader>h :call CppH()<CR>
+
+function! CppCmt()
+    let l:cmt_info = ['/**',
+                \' ******************************************************************************',
+                \' * FunctionName',
+                \' * ----------------------------------------------------------------------------',
+                \' * input parameters  :',
+                \' * ----------------------------------------------------------------------------',
+                \' * output parameters :',
+                \' * ----------------------------------------------------------------------------',
+                \' * Side effects      :',
+                \' * No.',
+                \' ******************************************************************************',
+                \' */']
+    call call('PrintList',l:cmt_info)
+endfunction
+
+nmap <leader>cmt :call CppCmt()<CR>
 
 " }
