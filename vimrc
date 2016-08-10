@@ -31,6 +31,7 @@ inoremap jj <ESC>
     endif
 " }
 
+
 "  UI setting  {
    set background=dark
    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
@@ -143,4 +144,10 @@ endfunction
 
 nmap <leader>cmt :call CppCmt()<CR>
 
+" }
+
+" local setting {
+    if filereadable(expand("~/.vimrc.local"))
+        source ~/.vimrc.local
+    endif
 " }
