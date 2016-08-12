@@ -15,6 +15,9 @@ Bundle 'majutsushi/tagbar'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'vim-scripts/winmanager'
 Bundle 'tacahiroy/ctrlp-funky'
+Bundle 'mrtazz/DoxygenToolkit.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-fugitive'
 
 
 "NERDTree{
