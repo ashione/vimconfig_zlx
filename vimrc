@@ -13,6 +13,9 @@ syntax on
 filetype plugin indent on
 filetype on
 
+"set numap ,
+let mapleader=","
+
 set showmatch
 set hlsearch
 set incsearch
@@ -62,7 +65,7 @@ inoremap jj <ESC>
 
 " keys-binding {
 "nmap <c-F5> :!g++ % -o out -std=c++11 && ./out<CR>
-nmap <c-F5> :call CompileFile()<CR>
+nmap <C-F5> :call CompileFile()<CR>
 
 func! CompileFile()
     if &filetype == 'cpp'
@@ -113,13 +116,13 @@ function! CppH()
             \'#include <string>',
             \'#include <vector>',
             \'#include <queue>',
-            \'#include <statck>',
+            \'#include <stack>',
             \'#include <map>',
             \'#include <list>',
             \'#include <cstdio>',
             \'#include <cstdlib>',
             \'#include <cstring>',
-            \'using namspace std']
+            \'using namspace std;']
     execute 'normal! i// Ashione '.strftime('%c')
     call call("PrintList",l:header_list)
 endfunction
