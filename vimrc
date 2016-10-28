@@ -122,7 +122,7 @@ function! CppH()
             \'#include <cstdio>',
             \'#include <cstdlib>',
             \'#include <cstring>',
-            \'using namspace std;']
+            \'using namespace std;']
     execute 'normal! i// Ashione '.strftime('%c')
     call call("PrintList",l:header_list)
 endfunction
