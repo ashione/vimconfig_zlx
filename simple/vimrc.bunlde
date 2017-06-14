@@ -1,0 +1,88 @@
+set nocompatible                " be iMproved
+filetype off                    " required!
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'powerline/fonts'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'scrooloose/nerdtree'
+Bundle 'mbbill/undotree'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'majutsushi/tagbar'
+Bundle 'jlanzarotta/bufexplorer'
+Bundle 'vim-scripts/winmanager'
+Bundle 'tacahiroy/ctrlp-funky'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+
+filetype plugin indent on
+
+"NERDTree{
+"        autocmd vimenter * NERDTree
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"}
+
+"TagBar{
+    nmap <Leader>tt :TagbarToggle<CR>
+"}
+"
+
+" Winmanager {
+
+let g:NERDTree_title="[NERDTree]"
+let g:BufExploer_title="[BufExplorer]"
+let g:winManagerWindowLayout="NERDTree|BufExplorer"
+"let g:persistentBehaviour=0
+let g:winManagerWidth=30
+let g:defaultExplorer=0
+
+nmap <C-w><C-f> :FirstExplorerWindow<CR>
+nmap <C-w><C-b> :BottomExplorerWindow<CR>
+
+function! NERDTree_Start()  
+        exec 'NERDTree'  
+endfunction
+
+function! NERDTree_IsValid()  
+         return 1  
+endfunction
+
+function! BufExplorer_Start()  
+        exec 'BufExplorer'  
+endfunction
+
+function! BufExploer_IsValid()  
+         return 1  
+endfunction
+
+nmap <C-m> :if IsWinManagerVisible() <BAR> WMToggle <CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
+
+"}
+"
+" BufExplorer {
+let g:bufExplorerDefaultHelp=0       " Do not show default help.
+let g:bufExplorerShowRelativePath=1  " Show relative paths.
+let g:bufExplorerSortBy='mru'        " Sort by most recently used.
+let g:bufExplorerSplitRight=0        " Split left.
+let g:bufExplorerSplitVertical=1     " Split vertically.
+let g:bufExplorerSplitVertSize = 30  " Split width
+let g:bufExplorerUseCurrentWindow=1  " Open in new window.
+autocmd BufWinEnter \[Buf\ List\] setl nonumber 
+
+" }
+
+" Ctrlp-funky {
+    nnoremap <Leader>fu :CtrlPFunky<CR>
+    " narrow the list down with a word under cursor
+    nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+    let g:ctrlp_funky_matchtype = 'path'
+" }
+
+" Powerline {
+set laststatus=2
+let g:Powerline_symbols='unicode'
+" }
+"
